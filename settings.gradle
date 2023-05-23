@@ -1,0 +1,3 @@
+rootProject.name = 'LabWork2'
+include 'module'
+include 'sub_module'
