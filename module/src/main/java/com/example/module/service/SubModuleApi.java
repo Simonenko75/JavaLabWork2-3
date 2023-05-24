@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Component
-@FeignClient(name = "User", url = "localhost:8888")
+@FeignClient(name = "user", url = "localhost:8888")
 public interface SubModuleApi {
 
     @GetMapping("/user/get")

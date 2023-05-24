@@ -1,3 +1,3 @@
-rootProject.name = 'LabWork2'
+rootProject.name = 'LabWork2-5'
 include 'module'
 include 'sub_module'
