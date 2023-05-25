@@ -1,4 +1,4 @@
-rootProject.name = 'LabWork2-5'
+rootProject.name = 'LabWork2-3'
 include 'module'
 include 'sub_module'
 include 'module_order_service'
