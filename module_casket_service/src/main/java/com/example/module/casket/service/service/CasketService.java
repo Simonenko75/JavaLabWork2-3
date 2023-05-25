@@ -13,7 +13,7 @@ import java.util.List;
 public class CasketService {
 
     @Autowired
-    private CasketRepository casketRepository;
+    public CasketRepository casketRepository;
 
     public ProductEntityDTO addProduct(ProductEntityDTO productEntityDTO){
         ProductEntity productEntity = new ProductEntity();
@@ -23,7 +23,6 @@ public class CasketService {
         productEntity.setCategory(productEntityDTO.getCategory());
         casketRepository.save(productEntity);
 
-        ProductEntityDTO testEntityResponseDTO = new ProductEntityDTO();
         ProductEntityDTO productDTO = new ProductEntityDTO();
         productDTO.setId(productEntity.getId());
         productDTO.setName(productEntity.getName());

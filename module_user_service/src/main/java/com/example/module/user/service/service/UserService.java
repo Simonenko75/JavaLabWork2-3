@@ -12,7 +12,7 @@ import java.util.Optional;
 public class UserService {
 
     @Autowired
-    private UserRepository userRepository;
+    public UserRepository userRepository;
 
     public UserEntity addUser(UserEntityDTO userEntityDTO) {
         UserEntity userEntity = new UserEntity();
@@ -30,18 +30,20 @@ public class UserService {
             userEntityDTO.setId(userEntity.getId());
             userEntityDTO.setLogin(userEntity.getLogin());
             userEntityDTO.setPassword(userEntity.getPassword());
+            userEntityDTO.setOrders(userEntity.getOrders());
         }
 
         return userEntityDTO;
     }
 
-    public UserEntityDTO getOrdersByUser(String orders) {
+    public UserEntityDTO getUserByOrders(String orders) {
         UserEntityDTO userEntityDTO = new UserEntityDTO();
         Optional<UserEntity> optionalUserEntity = userRepository.findByOrders(orders);
         if (optionalUserEntity.isPresent()) {
             UserEntity userEntity = optionalUserEntity.get();
             userEntityDTO.setId(userEntity.getId());
             userEntityDTO.setLogin(userEntity.getLogin());
+            userEntityDTO.setPassword(userEntity.getPassword());
             userEntityDTO.setOrders(userEntity.getOrders());
         }
 

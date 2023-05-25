@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @FeignClient(name = "User", url = "localhost:9999")
 public interface UserModuleApi {
 
-    @GetMapping("/user/get")
+    @GetMapping("/user/get/login")
+    @ResponseBody UserEntityDTO getUserIdByLogin(@RequestParam String login);
+
+    @GetMapping("/user/get/orders")
     @ResponseBody UserEntityDTO getUserByOrder(@RequestParam String orders);
 
 }

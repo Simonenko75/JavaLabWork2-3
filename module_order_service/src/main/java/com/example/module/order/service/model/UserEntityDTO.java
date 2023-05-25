@@ -7,6 +7,8 @@ import lombok.Setter;
 @Setter
 public class UserEntityDTO {
 
+    private Long id;
+
     private String login;
 
     private String password;

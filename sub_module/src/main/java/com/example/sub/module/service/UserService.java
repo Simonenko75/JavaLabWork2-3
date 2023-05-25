@@ -14,6 +14,13 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    public void addUser(UserEntityDTO userEntityDTO) {
+        UserEntity userEntity = new UserEntity();
+        userEntity.setLogin(userEntityDTO.getLogin());
+        userEntity.setPassword(userEntityDTO.getPassword());
+        userRepository.save(userEntity);
+    }
+
     public UserEntityDTO getUserByLogin(String login) {
         UserEntityDTO userEntityDTO = new UserEntityDTO();
         Optional<UserEntity> optionalUserEntity = userRepository.findByLogin(login);
@@ -23,13 +30,6 @@ public class UserService {
             userEntityDTO.setPassword(userEntity.getPassword());
         }
         return userEntityDTO;
-    }
-
-    public void addUser(UserEntityDTO userEntityDTO) {
-        UserEntity userEntity = new UserEntity();
-        userEntity.setLogin(userEntityDTO.getLogin());
-        userEntity.setPassword(userEntityDTO.getPassword());
-        userRepository.save(userEntity);
     }
 
 }

@@ -19,14 +19,14 @@ public class UserController {
         return userService.addUser(userEntityDTO);
     }
 
-    @GetMapping("/get/user")
+    @GetMapping("/get/login")
     public @ResponseBody UserEntityDTO getUserByLogin(@RequestParam String login) {
         return userService.getUserByLogin(login);
     }
 
     @GetMapping("/get/orders")
     public @ResponseBody UserEntityDTO getUserByOrders(@RequestParam String orders) {
-        return userService.getUserByLogin(orders);
+        return userService.getUserByOrders(orders);
     }
 
 }

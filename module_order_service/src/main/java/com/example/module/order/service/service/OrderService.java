@@ -18,25 +18,12 @@ import java.util.List;
 public class OrderService {
 
     @Autowired
-    private OrderRepository orderRepository;
+    public OrderRepository orderRepository;
 
     @Autowired
     private UserModuleApi userModuleApi;
 
-    public ResponseDTO getUserByOrder(UserEntityDTO userOrdersDTO) {
-        UserEntityDTO userEntityDTO = userModuleApi.getUserByOrder(userOrdersDTO.getOrders());
-        ResponseDTO responseDTO = new ResponseDTO();
-        if (userOrdersDTO.getOrders() != null) {
-            responseDTO.setMessage("Order was find");
-            return responseDTO;
-        }
-
-        responseDTO.setMessage("Order was not find");
-        return responseDTO;
-    }
-
     public OrderEntityDTO orderAdd(OrderEntityDTO orderEntityDTO) {
-        List<OrderEntityDTO> resultList = new ArrayList<>();
         OrderEntity orderEntity =  new OrderEntity();
         orderEntity.setName(orderEntityDTO.getName());
         orderEntity.setTitles(orderEntityDTO.getTitles());
@@ -49,6 +36,30 @@ public class OrderService {
         orderEntityResponseDTO.setTitles(orderEntity.getTitles());
         orderEntityResponseDTO.setQuantity(orderEntity.getQuantity());
         return orderEntityResponseDTO;
+    }
+
+    public ResponseDTO getUserIdByLogin(String login) {
+        UserEntityDTO userEntityDTO = userModuleApi.getUserIdByLogin(login);
+        ResponseDTO responseDTO = new ResponseDTO();
+        if (userEntityDTO.getId() != null) {
+            responseDTO.setMessage(userEntityDTO.getId().toString());
+            return responseDTO;
+        }
+
+        responseDTO.setMessage("Id was not find");
+        return responseDTO;
+    }
+
+    public ResponseDTO getUserByOrder(String orders) {
+        UserEntityDTO userEntityDTO = userModuleApi.getUserByOrder(orders);
+        ResponseDTO responseDTO = new ResponseDTO();
+        if (userEntityDTO.getLogin() != null) {
+            responseDTO.setMessage(userEntityDTO.getLogin());
+            return responseDTO;
+        }
+
+        responseDTO.setMessage("Login was not find");
+        return responseDTO;
     }
 
 }
